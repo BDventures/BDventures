@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "setup:rest-server": "cd rest-server && npm start",
+    "buildEnv": "node bin/buildEnv.js",
+    "build": "cd client && npm build"
   },
   "repository": {
     "type": "git",
@@ -21,7 +27,11 @@
     "mocha": "^6.2.1"
   },
   "dependencies": {
+    "babel-jest": "^24.9.0",
     "chai": "^4.2.0",
-    "enzyme": "^3.10.0"
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.4.0",
+    "jest": "^24.9.0"
   }
 }
