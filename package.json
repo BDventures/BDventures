@@ -1,0 +1,26 @@
+{
+  "name": "BDventures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BDventures/BDventures.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BDventures/BDventures/issues"
+  },
+  "homepage": "https://github.com/BDventures/BDventures#readme",
+  "devDependencies": {
+    "mocha": "^6.2.1"
+  },
+  "dependencies": {
+    "chai": "^4.2.0"
+  }
+}
