@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
-  },
   "scripts": {
-    "test": "mocha",
+    "test": "jest",
     "setup:rest-server": "cd rest-server && npm start",
     "buildEnv": "node bin/buildEnv.js",
     "build": "cd client && npm build"
