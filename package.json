@@ -1,0 +1,34 @@
+{
+  "name": "BDventures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "setup:rest-server": "cd rest-server && npm start",
+    "buildEnv": "node bin/buildEnv.js",
+    "build": "cd client && npm build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BDventures/BDventures.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BDventures/BDventures/issues"
+  },
+  "homepage": "https://github.com/BDventures/BDventures#readme",
+  "devDependencies": {
+    "mocha": "^6.2.1"
+  },
+  "dependencies": {
+    "babel-jest": "^24.9.0",
+    "chai": "^4.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.4.0",
+    "jest": "^24.9.0"
+  }
+}
