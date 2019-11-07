@@ -2,7 +2,9 @@
   "name": "client",
   "version": "1.0.0",
   "jest": {
-    "setupFilesAfterEnv": ["<rootDir>src/components/setupTests.js"],
+    "setupFilesAfterEnv": [
+      "<rootDir>src/components/setupTests.js"
+    ],
     "transform": {
       "^.+\\.js$": "babel-jest"
     },
@@ -17,7 +19,7 @@
     "verbose": true,
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-      ]
+    ]
   },
   "description": "",
   "main": "index.js",
