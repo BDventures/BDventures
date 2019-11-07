@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import User from './User/index';
-// import SmartComponent from './User/SmartComponent'
 
 class App extends Component {
   constructor() {
@@ -10,7 +9,6 @@ class App extends Component {
     return(
       <div>
         <User/>
-        {/* <SmartComponent/> */}
       </div>
     )
   }
