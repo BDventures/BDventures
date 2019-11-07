@@ -5,7 +5,7 @@ class UserRegister extends Component {
     super(props);
 
     this.state = {
-      counter: 1
+      counter: 0
     }
   }
 
@@ -14,22 +14,23 @@ class UserRegister extends Component {
   }
 
   componentWillUpdate(newProps, newState) {
-    console.log(newProps, 'new props') //new props that will update
-    console.log(newState, 'new state') //new state that will update
+    console.log(newProps, 'new props') //new props that's been passed so technically same as this.props from CDU?
+    console.log(newState, 'new state') //new state on this component (UserRegister)
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log(this.props, 'this is this.props')
+    // console.log(this.props.stateInfo.name, prevProps.stateInfo.name, '?')
     if(this.props.stateInfo.name !== prevProps.stateInfo.name) {
       this.setState({
         counter: this.state.counter+1
       })
     }
-    console.log(prevProps, 'prev props') //state from parent component
-    console.log(prevState, 'prev state') //previous state before when im typing
+    console.log(prevProps, 'prev props') //previous props that's been passed before CDU
+    console.log(prevState, 'prev state') //previous state of current component (UserRegister)
   }
 
   render() {
+    console.log(this.props, 'this is this.props')
     return (
       <div className="user_parent">
           <form
