@@ -1,65 +1,51 @@
 import React, { Component } from "react";
-import LandingPage from "../LandingPage";
 
 class UserRegister extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      name: "",
-      address: "",
-      state: "",
-      city: "",
-      zip: null,
-      description: "",
-      contactEmail: "",
-      userLoggedIn: false
-    };
+      counter: 1
+    }
   }
 
-  updateInfo(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+  handleStateChange(e) {
+    this.props.updateInfo(e)
   }
 
-  submitUserInfo() {
-    this.setState({
-      userLoggedIn: !this.state.userLoggedIn
-    });
+  componentWillUpdate(newProps, newState) {
+    console.log(newProps, 'new props') //new props that will update
+    console.log(newState, 'new state') //new state that will update
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // console.log(this.props, 'this is this.props')
+    if(this.props.stateInfo.name !== prevProps.stateInfo.name) {
+      this.setState({
+        counter: this.state.counter+1
+      })
+    }
+    console.log(prevProps, 'prev props') //state from parent component
+    console.log(prevState, 'prev state') //previous state before when im typing
   }
 
   render() {
     return (
       <div className="user_parent">
-        {this.state.userLoggedIn ? (
-          <LandingPage />
-        ) : (
           <form
             className="user_register"
-            onChange={e => {
-              this.updateInfo(e);
-            }}
           >
-            <label className='user_register_label'>
-              Name: <input type="text" name="name" />
+            <label className='user_register_label' onChange={(e) => {this.handleStateChange(e)}}>
+              Name: <input type="text" name="name"/>
               Address: <input type="text" name="address" />
               State: <input type="text" name="state" />
               City: <input type="text" name="city" />
               Zip: <input type="text" name="zip" />
               Description: <textarea rows="4" cols="50" name="description" />
               Contact Email: <input type="text" name="contactEmail" />
-              <button
-                type="button"
-                onClick={() => {
-                  this.submitUserInfo();
-                }}
-              >
-                Submit
-              </button>
+              Counter: {this.state.counter}
             </label>
           </form>
-        )}
       </div>
     );
   }

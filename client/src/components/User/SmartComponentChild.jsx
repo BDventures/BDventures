@@ -8,7 +8,7 @@ class SmartComponentChild extends Component {
     const {name, age} = this.props.userInfo
 
     this.state = {
-      name: name,
+      name: '',
       age: age,
       text: '',
       parentComponent: false
@@ -29,16 +29,18 @@ class SmartComponentChild extends Component {
   }
 
   componentWillUpdate(newProps, newState) {
-    console.log(newProps, 'new props')
-    console.log(newState, 'new state')
+    console.log(newProps, 'new props') //new props that will update
+    console.log(newState, 'new state') //new state that will update
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(prevProps, 'prev props')
-    console.log(prevState, 'prev state')
+    console.log(this.props, 'this is this.props')
+    console.log(prevProps, 'prev props') //state from parent component
+    console.log(prevState, 'prev state') //previous state before when im typing
   }
 
   render() {
+    // console.log(this.props.userInfo, 'what is this')
     const {name, age} =this.state
     return(
       <div>
@@ -49,7 +51,8 @@ class SmartComponentChild extends Component {
           </li>
         </ul>
 
-        <input type="text" name="text" onChange={(e) => {this.addToNames(e)}}></input>
+        {/* <input type="text" name="name"></input> */}
+        <input type="text" name="name" onChange={(e) => {this.addToNames(e)}}></input>
         <button onClick={() => {this.buttonClick()}}></button></div>}
       </div>
     )
