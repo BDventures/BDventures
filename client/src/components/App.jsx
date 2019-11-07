@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import User from './User/index';
+import SmartComponent from './User/SmartComponent'
 
 class App extends Component {
   constructor() {
@@ -8,7 +9,8 @@ class App extends Component {
   render() {
     return(
       <div>
-        <User/>
+        {/* <User/> */}
+        <SmartComponent/>
       </div>
     )
   }
