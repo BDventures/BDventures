@@ -36,11 +36,11 @@ class UserRegister extends Component {
     //on the label OnChange instead of just running it within another function 
     //I can just do onChange={(e) => this.props.updateInfo(e)}
     return (
-      <div className="user_parent">
+      <div id="user_register">
           <form
-            className="user_register"
+            className="user_form" id="user_register_form"
           >
-            <label className='user_register_label' onChange={(e) => {this.handleStateChange(e)}}>
+            <label className='user_register_form_label' onChange={(e) => {this.handleStateChange(e)}}>
               Name: <input type="text" name="name"/>
               Address: <input type="text" name="address" />
               State: <input type="text" name="state" />

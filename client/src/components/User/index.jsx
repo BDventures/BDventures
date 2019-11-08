@@ -29,7 +29,7 @@ class User extends Component {
     //all we're doing is passing the state and the function declaration down to child component with this.updateInfo(e)
     //and this.state
     return(
-      <div>
+      <div className="user_parent">
         <UserRegister stateInfo={this.state} updateInfo={(e) => {this.updateInfo(e)}}/>
       </div>
     )
