@@ -23,7 +23,7 @@ class User extends Component {
   async updateInfo(e) {
     //information passed from userRegister child updates the state here // try to keep any state in root components
     //step 2) async and await the data I need that comes back from GetUserData
-    this.setState({
+    await this.setState({
       [e.target.name]: e.target.value
     })
     let finalData = await GetUserData(this.state)
