@@ -20,7 +20,7 @@ class UserRegister extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log(this.props.stateInfo.name, prevProps.stateInfo.name, '?')
+    // console.log(this.props.stateInfo.name, prevProps.stateInfo.name, 'this is props vs previous props')
     if(this.props.stateInfo !== prevProps.stateInfo) {
       this.setState({
         counter: this.state.counter+1
