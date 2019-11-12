@@ -20,13 +20,13 @@ class UserRegister extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log(this.props.stateInfo.name, prevProps.stateInfo.name, 'this is props vs previous props')
+    console.log(this.props.stateInfo.name, prevProps.stateInfo.name, 'props vs prevProps, you can see this if you cross out the SetState below')
     if(this.props.stateInfo !== prevProps.stateInfo) {
       this.setState({
         counter: this.state.counter+1
       })
     }
-    console.log(prevProps, 'prev props') //previous props that's been passed before this.setState is ran on CDU
+    // console.log(prevProps, 'prev props') //previous props that's been passed before this.setState is ran on CDU
     console.log(prevState, 'prev state') //previous state of current component (UserRegister) of this.state.counter
   }
 
