@@ -15,7 +15,7 @@ class User extends Component {
       description: "",
       contactEmail: "",
       userLoggedIn: false,
-      newData: '',
+      userInfoFilled: false,
       finally: ''
     }
   }
@@ -35,6 +35,11 @@ class User extends Component {
     if(finalData) this.setState({
       finally: finalData
     })
+    if(finalData !== 'sorry not all data is filled out') {
+      this.setState({
+        userInfoFilled: true
+      })
+    }
   }
   render() {
     console.log(this.state, 'this is state from user parent')

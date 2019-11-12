@@ -18,8 +18,9 @@ const success = (data) => {
 //same thing as promise fn? check to see
 
 const asyncFn = async (data) => {
-  let error = `sorry no name is found`
-  if(!data) return await errorMsg(error)
+  let error = `sorry not all data is filled out`
+  if(!data.name || !data.address || !data.state || !data.city || !data.zip || !data.description || !data.contactEmail)
+  return await errorMsg(error)
 
   let awaitedData = await success(data)
   return awaitedData

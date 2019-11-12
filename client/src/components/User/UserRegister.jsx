@@ -5,8 +5,15 @@ class UserRegister extends Component {
     super(props);
 
     this.state = {
-      counter: 0
+      counter: 0,
+      buttonEnabled: true
     }
+  }
+
+  enableButton() {
+    this.setState({
+      buttonEnabled: !this.state.buttonEnabled
+    })
   }
 
   handleStateChange(e) {
@@ -20,12 +27,14 @@ class UserRegister extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const {counter} = this.state
     console.log(this.props.stateInfo.name, prevProps.stateInfo.name, 'props vs prevProps, you can see this if you cross out the SetState below')
     if(this.props.stateInfo !== prevProps.stateInfo) {
       this.setState({
-        counter: this.state.counter+1
+        counter: counter+1
       })
     }
+    if(this.props.stateInfo.userInfoFilled !== prevProps.stateInfo.userInfoFilled) this.enableButton()
     // console.log(prevProps, 'prev props') //previous props that's been passed before this.setState is ran on CDU
     console.log(prevState, 'prev state') //previous state of current component (UserRegister) of this.state.counter
   }
@@ -50,6 +59,7 @@ class UserRegister extends Component {
               Contact Email: <input type="text" name="contactEmail" />
               Counter: {this.state.counter}
             </label>
+            <button disabled={this.state.buttonEnabled} type="submit">Submit</button>
           </form>
       </div>
     );
