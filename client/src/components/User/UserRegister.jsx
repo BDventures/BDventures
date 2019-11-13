@@ -16,6 +16,10 @@ class UserRegister extends Component {
     })
   }
 
+  onSubmit() {
+    this.props.changeStateInApp()
+  }
+
   handleStateChange(e) {
     //this data gets passed to index.jsx file of User which handles all the changes made here in this form
     this.props.updateInfo(e)
@@ -59,7 +63,7 @@ class UserRegister extends Component {
               Contact Email: <input type="text" name="contactEmail" />
               Counter: {this.state.counter}
             </label>
-            <button disabled={this.state.buttonEnabled} type="submit">Submit</button>
+            <button disabled={this.state.buttonEnabled} type="submit" onClick={() => {this.onSubmit()}}>Submit</button>
           </form>
       </div>
     );

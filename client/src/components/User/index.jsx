@@ -14,7 +14,6 @@ class User extends Component {
       zip: null,
       description: "",
       contactEmail: "",
-      userLoggedIn: false,
       userInfoFilled: false,
       finally: ''
     }
@@ -42,13 +41,14 @@ class User extends Component {
     }
   }
   render() {
-    console.log(this.state, 'this is state from user parent')
+    console.log(this.props, 'this is props passed from App')
+    // console.log(this.state, 'this is state from user parent')
     
     //all we're doing is passing the state and the function declaration down to child component with this.updateInfo(e)
     //and this.state
     return(
       <div className="user_parent">
-        <UserRegister stateInfo={this.state} updateInfo={(e) => {this.updateInfo(e)}}/>
+        <UserRegister stateInfo={this.state} changeStateInApp={() => {this.props.changeStateInApp()}} updateInfo={(e) => {this.updateInfo(e)}}/>
         {this.state.finally}
       </div>
     )
