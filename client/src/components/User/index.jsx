@@ -31,7 +31,7 @@ class User extends Component {
     let finalData = await GetUserData(this.state)
     // console.log(finalData, 'this is the final dataaa!') im awaiting the from GetUserData
 
-    //finally I'm able to set this and display it!!!!! WELL DONE!
+    //finally I'm able to set this and display it regardless of the error message or the success
     if(finalData) this.setState({
       finally: finalData
     })
