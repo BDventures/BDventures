@@ -1,3 +1,10 @@
+// const errormsg = (err) => (
+//   err
+// )
+// const success = (data) => (
+//   `${data} Kim`
+// )
+
 const errorMsg = (err) => {
   return err
 }
