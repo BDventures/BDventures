@@ -22,7 +22,8 @@ class App extends Component {
     const {userLoggedIn} = this.state
     return(
       <div>
-        {userLoggedIn ? <LandingPage/> : <User changeStateInApp={() => {this.changeStateInApp()}} userLoggedIn={userLoggedIn}/>}
+        {/* {userLoggedIn ? <LandingPage/> : <User changeStateInApp={() => {this.changeStateInApp()}} userLoggedIn={userLoggedIn}/>} */}
+        <LandingPage/>
       </div>
     )
   }
