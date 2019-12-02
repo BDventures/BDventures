@@ -22,7 +22,13 @@ const success = (data) => {
 //   })
 // }
 
-//same thing as promise fn? check to see
+//async keyword allows us to write functions that returns a promise
+//and wraps non promises in it as well
+
+//await keyword waits for the promise to be settled and returns a result
+//which is better than using promise.then(response) => {return response}
+
+//
 
 const asyncFn = async (data) => {
   let error = `sorry not all data is filled out`
