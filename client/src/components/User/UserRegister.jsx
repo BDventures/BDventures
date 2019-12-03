@@ -35,7 +35,7 @@ class UserRegister extends Component {
     console.log(this.props.stateInfo.name, prevProps.stateInfo.name, 'props vs prevProps, you can see this if you cross out the SetState below')
     if(this.props.stateInfo !== prevProps.stateInfo) {
       this.setState({
-        counter: counter+1
+        counter: this.state.counter+1
       })
     }
     if(this.props.stateInfo.userInfoFilled !== prevProps.stateInfo.userInfoFilled) this.enableButton()
