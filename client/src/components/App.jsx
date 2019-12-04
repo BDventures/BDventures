@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import User from './User/index';
 import LandingPage from './LandingPage/index';
 import ReactHooks from './ReactHooks/index';
+import WeatherHooks from './WeatherHooks/index';
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +25,8 @@ class App extends Component {
     return(
       <div>
         {/* {userLoggedIn ? <LandingPage/> : <User changeStateInApp={() => {this.changeStateInApp()}} userLoggedIn={userLoggedIn}/>} */}
-        <ReactHooks/>
+        {/* <ReactHooks/> */}
+        <WeatherHooks/>
       </div>
     )
   }

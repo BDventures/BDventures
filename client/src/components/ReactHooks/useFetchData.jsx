@@ -16,7 +16,9 @@ export const useFetchData = (url) => {
       //data is now the response.data, loading is false
     let asyncFn = async() => {
       let response = await axios.get(url)
-      console.log(response.data)
+      console.log(response)
+      //no need to await x response.data?
+
       let x = await response.data
       setState({
         data: x, loading: false
