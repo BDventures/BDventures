@@ -6,9 +6,9 @@ const weatherKey = process.env.apiWeatherKey;
 const WeatherHooks = () => {
   const [city, handleCity] = userForm({city: ''})
   
-  const {data} = fetchWeather(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${weatherKey}`)
+  const {data, cityName, weather, description, windSpeed} = fetchWeather(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${weatherKey}`)
   console.log(city.city, 'city data')
-  console.log(data, 'what is this data')
+  console.log(cityName, weather, description, windSpeed, 'what is this data')
   return (
     <div>
       <input placeholder='enter city' name='city' onChange={handleCity}></input>
