@@ -8,7 +8,7 @@ const ReactHooks = () => {
   const[count, handleChange] = useCount(0)
   const [initialCount, setInitialCount] = useState(0)
 
-  const [values, setValues] = userForm({email: '', password: ''})
+  const [values, handleValues] = userForm({email: '', password: ''})
 
   const [counter, setCounter] = useState(1)
 
@@ -22,8 +22,8 @@ const ReactHooks = () => {
       <div>{!data ? 'loading...' : data}</div>
       <button onClick={() => setCounter(c => c+1)}>{counter}</button>
 
-      <input name='email' placeholder='email' onChange={setValues}></input>
-      <input name='password' placeholder='password' onChange={setValues}></input>
+      <input name='email' placeholder='email' onChange={handleValues}></input>
+      <input name='password' placeholder='password' onChange={handleValues}></input>
 
 
       <button onClick={handleChange}>+</button>

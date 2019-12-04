@@ -23,7 +23,6 @@ export const useFetchData = (url) => {
       })
     }
     //must call the asyncFn for it to run
-
     asyncFn()
     
     //set the dependency that useEffect will run only if
