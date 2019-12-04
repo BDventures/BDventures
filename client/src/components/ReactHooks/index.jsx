@@ -1,40 +1,34 @@
 import React, { useState, useEffect } from "react";
-import {useForm} from './userForm.jsx';
+import {userForm} from './userForm.jsx';
 import {useCount} from './userCount.jsx';
+import {useFetchData} from './useFetchData.jsx';
 import axios from 'axios'
 
 const ReactHooks = () => {
-  const [values, handleChange] = useForm({email: '', password: ''})
-  const [number, setNumber] = useCount(0)
+  const[count, handleChange] = useCount(0)
+  const [initialCount, setInitialCount] = useState(0)
 
-  //useEffect = everytime a component renders or re-renders, this fn will get called
-  useEffect(() => {
-    console.log('render')
+  const [values, setValues] = userForm({email: '', password: ''})
 
-    //the return is called a clean-up function, which means
-    //you can add all your clean up logic
-    return () => {
-      console.log('unmount')
-    } 
-  }, [number])
+  const [counter, setCounter] = useState(1)
 
+  //this is state.data, loading.data from useFetchData fn
+  const {data, loading} = useFetchData(`http://numbersapi.com/${counter}/trivia`)
+  console.log(data, 'data')
+  console.log(loading, 'loading')
   return (
     <div>
 
-      <div>{number}</div>
-      <button onClick={setNumber}>increment</button>
-      
-      <input
-        name="email"
-        value={values.email}
-        onChange={handleChange}
-      ></input>
-      <input
-        type="password"
-        name="password"
-        value={values.password}
-        onChange={handleChange}
-      ></input>
+      <div>{!data ? 'loading...' : data}</div>
+      <button onClick={() => setCounter(c => c+1)}>{counter}</button>
+
+      <input name='email' placeholder='email' onChange={setValues}></input>
+      <input name='password' placeholder='password' onChange={setValues}></input>
+
+
+      <button onClick={handleChange}>+</button>
+      {count} / {initialCount}
+      <button onClick={() => setInitialCount(initialCount => initialCount-1)}>-</button>
     </div>
   );
 };

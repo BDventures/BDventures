@@ -1,9 +1,9 @@
 import {useState} from 'react'
 
 export const useCount = (num) => {
-  const [number, setNumber] = useState(num) 
+  const [count, setCount] = useState(num)
 
-  return [number, () => {
-    setNumber(c => c+1)
+  return [count, () => {
+    setCount(count + 1)
   }]
 }
