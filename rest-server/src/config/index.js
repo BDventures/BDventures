@@ -11,6 +11,7 @@ const middleWare = [
   cors({
     allowedHeaders: ['Content-type', 'Authorization'],
     methods: ['GET', 'POST', 'PUT','DELETE', 'OPTIONS']
+
   }),
   parser.json(),
   parser.urlencoded( { extended: true } ),

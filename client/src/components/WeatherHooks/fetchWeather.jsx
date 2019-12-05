@@ -11,8 +11,10 @@ export const fetchWeather = (url, loading) => {
       let x = await response.data;
       console.log(x, 'this is x')
       //x.name, x.weather[0].main, x.weather[0].description
+      if(x.wind.speed > 3) x.wind.speed = 'Lots of Wind'
+      else x.wind.speed = 'Little Bit of Wind'
       setWeather({
-        cityName: x.name, weather: x.weather[0].main, description: x.weather[0].description, windSpeed: x.wind.speed})
+        cityName: x.name, weather: x.weather[0].main, description: x.weather[0].main, windSpeed: x.wind.speed})
     }
     asyncFn()
   }, [loading])
