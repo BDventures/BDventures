@@ -9,8 +9,8 @@ const WeatherHooks = () => {
   const [finalCity, setFinalCity] = useState("");
 
   //same thing as weather.cityName ///this.state.cityName since im returning weather from fetchWeather
-  const { cityName, weather, description, windSpeed } = fetchWeather(
-    `https://api.openweathermap.org/data/2.5/weather?q=${finalCity},uk&appid=${weatherKey}`,
+  const { cityName, temperature, description, windSpeed } = fetchWeather(
+    `https://api.openweathermap.org/data/2.5/weather?q=${finalCity}&appid=${weatherKey}`,
     loading
   );
   console.log(city, 'this is the city')
@@ -39,7 +39,7 @@ const WeatherHooks = () => {
         {!finalCity ? "loading city data" : 
         <div>
           <div>City: {cityName}</div>
-          <div>Weather: {weather}</div>
+          <div>Temperature: {temperature} degrees</div>
           <div>Description: {description}</div>
           <div>Windy: {windSpeed}</div>
         </div>
