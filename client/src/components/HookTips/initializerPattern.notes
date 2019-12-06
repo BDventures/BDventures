@@ -106,7 +106,7 @@ useEffect(() => {
           here's a solution:
 
           //consumers app
-          const {resetDep} useCounter()
+          const {resetDep} = useCounter()
 
           //boolean ref. default to true
           const componentJustMouted = useRef(true)

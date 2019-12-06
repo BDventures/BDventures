@@ -28,6 +28,13 @@ class UserRegister extends Component {
   componentWillUpdate(newProps, newState) {
     console.log(newProps, 'new props') //new props that's been passed so technically same as this.props from CDU?
     console.log(newState, 'new state') //new state on this component (UserRegister) which is this.state.counter
+    //do not call this.setState = this will trigger an infinite loop
+    //this.props, this.state is your old props and state:
+
+      //componentWillUpdate(nextProps, nextState) {
+      //if (nextState.open == true && this.state.open == false) {
+      //this.props.onWillOpen();
+      //}
   }
 
   componentDidUpdate(prevProps, prevState) {
