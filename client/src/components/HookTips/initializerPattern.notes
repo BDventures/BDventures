@@ -1,0 +1,121 @@
+1) CONFIGURE INITIAL STATE
+
+- look into intializer of useState()
+  state initializer pattern = every human begins life as an infant
+    this is the initial state, no human comes into the world as a fully grown person
+    as humans grow, there's no way to reset a full-grown adult back to an infant = initial state
+    the state intializer pattern means exposing a reset callback so your hook can reset back to intial state
+  if you reset back to inital state, you need to perform clean ups such as selling the adult' property, issuing divorce, etc
+  infant doesn't need that, so you clean up their adult life
+    in the same vein, when you reset back to the initial state, you need to make the functionality available
+      1) Allow for configurable initial state
+      2) Expose a reset function handler to the consumer
+      3) Allow for performing any side effects just after a reset
+
+      DO THIS:
+      export const useCounter = (initialCount = 1) => {
+        const[count, setCount] = useState(initialCount)
+      
+        return {
+          count, setCount
+        }
+      }
+      
+      NOT THIS:
+      export const userCounter = () => {
+        const [counter, setCount] = useState(1)
+      
+        return {
+          count, setCount
+        }
+      }
+
+2) HANDLING RESETS
+
+- to write a reset, expose a callback that the consumer can invoke at any point in time
+  
+  first, create a fn that performs that actual reset within the custom hook
+
+export const useCounter = (initalCount = 1) => {
+  const [count, setCount] = useState(initialCount)
+
+  //look here
+  const reset = useCallback() => {
+    setCount(initialCount)
+  }, [initialCount]
+
+  //expose this reset fn in the returned object value
+  return {
+    count, setCount, reset
+  }
+}
+
+<button onClick={reset}></button>
+
+3) TRIGGERING A SIDE EFFECT
+
+- one last requirement of the state initializer
+
+HOW TO TRIGGER A SIDE EFFECT
+  //you need to expose a dependency - one that changes when a reset button has been triggered internally
+  //there are 2 different ways to approach this:
+
+useEffect(() => {
+  //perform side effect here
+
+}, [dependency])
+
+
+  //preferred solution:
+
+  const useCounter = (initialValue = 1) => {
+    const [count, setCount] = useState(initialValue)
+
+    //look here
+    const resetRef = useRef(0)
+
+    const reset = () => {
+      setCount(initialValue)
+      ++resetRef.current
+    }, [initialValue]
+
+    return {
+      count, setCount, reset, resetDep: resetRef.current //expose this dependency
+    }
+  }
+    
+    //first, a ref was created to hold the # of resets that have been triggered, this is done using useRef hook
+    //whenever the reset callback is invoked by the user, you need to udpate the reset ref count by doing ++resetRef.current
+    //finally expose this reset count as resetDep, reset dependency by returning the resetRef.current in the return
+      //user may retrieve the reset dependency, resetDep, and perform a side effect only when this value changes
+        //so how will the consumer use this exposed resetDep?
+          
+          //quick teaser: WILL THIS WORK?
+            const {resetDep} = useCounter()
+
+            useEffect(() => {
+
+            } [resetDep])
+          
+          //ANSWER IS NO! so what's wrong?
+          //the problem is useEffect runs and triggers when the component first mounts
+          //consequently, the reset side effect will be triggered on mount and, whenever resetDep changes
+          //we don't want reset side effect triggered on mount, to fix this, user may provide a check for when component mounts
+          //and only trigger the effect function afterwards
+
+          here's a solution:
+
+          //consumers app
+          const {resetDep} useCounter()
+
+          //boolean ref. default to true
+          const componentJustMouted = useRef(true)
+
+          //useEffect(() => {
+            if(!componentJustMounted) {
+              //perform side effect
+              //only when the component isn't just mounted
+            }
+            //if not set boolean ref to false
+            componentJustMounted.current = false
+          }, [resetDep])

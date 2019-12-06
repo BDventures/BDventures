@@ -1,0 +1,75 @@
+Please also note that your state doesn’t have to be an object!
+
+
+Indeed, in our first example, it was an array (useState([])).
+State can be anything when using React Hooks: An array, an object, a number, a string or a boolean.
+
+If it is an object, just keep in mind that React won’t merge your old state with your new state when you’re setting it.
+You will always overwrite the old state and hence any merging that might be required has to be done by you!
+
+The useEffect() Hook
+Besides useState(), there’s another “core React Hook”: useEffect().
+This Hook should be used for any side-effects you’re executing in your render cycle.
+
+useEffect() takes a function as an input and returns nothing. 
+The function it takes will be executed for you after every render cycle.
+
+ON RETURNS WHEN YOU, YOU CAN DO ANYTHING...IN A FUNCTION, YOU CAN RETURN [], STRINGS, FUNCTIONS, ETC.
+ON USEEFFECT, YOU DON'T REALLY NEED TO RETURN ANYTHING, UNLESS YOU WANT TO CLEAN UP, SEE BELOW:
+
+componentDidMount
+useEffect(() => { ... }, [])
+
+componentDidUpdate
+Limit execution to the change of certain dependencies (comparable to manual diffing/ if checks in componentDidUpdate):
+
+useEffect(() => { ... }, [dependency1, dependency2])
+
+Alternatively, you run your effect on every re-render cycle:
+
+useEffect(() => { ... })
+
+What about componentWillUnmount and Cleanup Work?
+Cleaning up event listeners, Websocket connections or timers comes to mind.
+In class-based components, you would typically use componentWillUnmount for that.
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    // do something amazing here
+  }, 2000)
+  return () => {
+    // Cleanup work goes in here
+    clearTimeout(timer)
+  }
+})
+
+
+Implementing constructor code into a functional component is easy.
+
+If it should only execute once (when the component is created), use useEffect() like this:
+const Shop = props => {
+    useEffect(() => {
+        // Initialization work
+    }, [])
+    return ...
+}
+
+shouldComponentUpdate(). = React.memo().
+This is not a Hook but simply a method that allows you to potentially 
+remove your functional components from the rendering queue (for a given update).
+
+import React from 'react'
+
+const Person = props => {
+  return <p>My name is {props.name}</p>
+}
+
+export default React.memo(Person)
+
+<Person /> only depends on the name prop and hence it should only be re-evaluated by React if that prop changes.
+(by default, it would be re-rendered, even if name didn’t change).
+
+By wrapping the whole component with React.memo()
+you ensure that React only re-renders the component if the props used by the component changed
+In this case, that would only be the name prop.
+

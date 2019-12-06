@@ -7,14 +7,13 @@ const WeatherHooks = () => {
   let [loading, setLoading] = useState(true);
   const [city, handleCity] = userForm("");
   const [finalCity, setFinalCity] = useState("");
+
+  //same thing as weather.cityName ///this.state.cityName since im returning weather from fetchWeather
   const { cityName, weather, description, windSpeed } = fetchWeather(
     `https://api.openweathermap.org/data/2.5/weather?q=${finalCity},uk&appid=${weatherKey}`,
     loading
   );
-  console.log(city, "city data");
-  console.log(cityName, weather, description, windSpeed, "what is this data");
-  console.log(finalCity, "final city");
-  console.log(loading, "this load");
+  console.log(city, 'this is the city')
 
   useEffect(() => {
     const changeLoading = () => {
@@ -25,6 +24,11 @@ const WeatherHooks = () => {
       changeLoading();
     }
   }, [finalCity]);
+
+  //save data to local storage
+  // useEffect(() => {
+  //   localStorage.setItem('city name', finalCity)
+  // }, [finalCity])
 
   return (
     <div>

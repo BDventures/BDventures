@@ -1,0 +1,13 @@
+A pure component only interacts with itself and its children. 
+Any time you need to interact with the world outside your component, you are dealing with side-effects.
+
+the React.useEffect hook lets us specify a function that deals with external forces
+provide a second function to clean up after it
+and drop a list of dependencies so we can re-run the effect when one of the dependencies change.
+-----------------------------------------------------------------------------
+Unlike useEffect, React.useMemo does not trigger every time you change one of its dependencies.
+A memoized function will first check to see if the dependencies have changed since the last render.
+If so, it executes the function and returns the result. If false, it simply returns the cached result from the last execution.
+
+This is good for expensive operations like transforming 
+API data or doing major calculations that you don't want to be re-doing unnecessarily
