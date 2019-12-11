@@ -15,9 +15,7 @@ const SpotifyHooks = () => {
         </div>
       ) : (
         <div>
-          click to load teams
-          <br />
-          <button onClick={() => setLoading(false)}>hi</button>
+          <button onClick={() => setLoading(false)}>Get Teams</button>
         </div>
       )}
     </div>

@@ -3,7 +3,7 @@ import axios from "axios";
 const nbaKey = process.env.apiNbaKey;
 
 export const getTeams = (url, loading) => {
-  const [teams, setTeams] = useState([]);
+  const [teams, setTeams] = useState();
   console.log(teams, 'heoihesithseiot')
   useEffect(() => {
     const getTeamsData = async () => {
@@ -13,7 +13,8 @@ export const getTeams = (url, loading) => {
           "x-rapidapi-key": nbaKey
         }
       });
-      setTeams(responseTeams.data.data.map(team => <li>{team.city}</li>))
+      console.log(responseTeams, 'hello')
+      setTeams(responseTeams.data.data.map(team => <li>{team.city} {team.name} ({team.abbreviation})</li>))
     };
 
     getTeamsData();
