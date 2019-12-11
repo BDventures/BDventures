@@ -9,8 +9,6 @@ export const fetchWeather = (url, loading) => {
     let asyncFn = async () => {
       let response = await axios.get(url)
       let x = await response.data;
-      console.log(x, 'this is x')
-      //x.name, x.weather[0].main, x.weather[0].description
       let weatherTemp = await Math.floor((x.main.temp-273.15)*1.8)+32
       console.log(typeof weatherTemp, 'this is weather temp')
       if(x.wind.speed > 3) x.wind.speed = 'Lots of Wind'
@@ -20,6 +18,6 @@ export const fetchWeather = (url, loading) => {
     }
     asyncFn()
   }, [loading])
-  console.log(weather, 'this the weather')
+  // console.log(weather, 'this the weather')
   return weather;
 }

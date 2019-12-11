@@ -3,8 +3,23 @@ import axios from "axios";
 const nbaKey = process.env.apiNbaKey;
 
 export const getTeams = (url, loading) => {
-  const [teams, setTeams] = useState();
-  console.log(teams, 'heoihesithseiot')
+  const [westConference, setWestConference] = useState([])
+  const [eastConference, setEastConference] = useState([])
+
+  // const daniel = async() => {
+  //   let response = await axios.get(`https://www.fantasybasketballnerd.com/service/players`,{
+  //     headers: {
+  //       'Access-Control-Allow-Origin': '*',
+  //         // 'Content-Type': 'application/x-www-form-urlencoded'
+  //     }
+  //   })
+    
+  //   console.log(response)
+  // }
+  // daniel()
+
+  // console.log(westConference, 'west conference')
+  // console.log(eastConference, 'east conference')
   useEffect(() => {
     const getTeamsData = async () => {
       let responseTeams = await axios.get(url, {
@@ -13,13 +28,19 @@ export const getTeams = (url, loading) => {
           "x-rapidapi-key": nbaKey
         }
       });
-      console.log(responseTeams, 'hello')
-      setTeams(responseTeams.data.data.map(team => <li>{team.city} {team.name} ({team.abbreviation})</li>))
+      
+      let finalData = responseTeams.data.data.map(team => {
+        if(team.conference === 'West') {
+          setWestConference(teams => teams.concat(team))
+        } else {
+          setEastConference(teams => teams.concat(team))
+        }
+      })
     };
-
+    
     getTeamsData();
 
   }, [loading]);
 
-  return teams
+  return {westConference, eastConference};
 };
