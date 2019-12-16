@@ -22,7 +22,8 @@ const envVariables = new webpack.DefinePlugin({
   'process.env': {
     'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     'apiWeatherKey': JSON.stringify(process.env.apiWeatherKey),
-    'apiNbaKey': JSON.stringify(process.env.apiNbaKey)
+    'apiNbaKey': JSON.stringify(process.env.apiNbaKey),
+    'apiSportsKey': JSON.stringify(process.env.apiSportsKey)
   }
 });
 
