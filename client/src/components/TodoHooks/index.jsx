@@ -15,7 +15,8 @@ const TodoHooks = () => {
       text: 'have to head home after',
       isCompleted: false
     }
-  ]) 
+  ])
+  
 
   return (
     <div className='todoParent'>
@@ -24,6 +25,8 @@ const TodoHooks = () => {
           <Todo key={index} index={index} todo={todo}/>
         ))}
       </div>
+
+      <input type='text'/>
     </div>
   )
 }
