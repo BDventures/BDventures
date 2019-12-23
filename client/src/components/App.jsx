@@ -4,6 +4,7 @@ import LandingPage from './LandingPage/index';
 import ReactHooks from './ReactHooks/index';
 import WeatherHooks from './WeatherHooks/index';
 import SpotifyHooks from './SpotifyHooks/index';
+import TodoHooks from './TodoHooks/index';
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +29,8 @@ class App extends Component {
         {/* {userLoggedIn ? <LandingPage/> : <User changeStateInApp={() => {this.changeStateInApp()}} userLoggedIn={userLoggedIn}/>} */}
         {/* <ReactHooks/> */}
         {/* <WeatherHooks/> */}
-        <SpotifyHooks/>
+        {/* <SpotifyHooks/> */}
+        <TodoHooks/>
       </div>
     )
   }

@@ -1,0 +1,12 @@
+const inputRef =  useRef()
+
+<input ref={inputRef}></input>
+
+now I HAVE REFERENCE TO THE INPUT FIELD
+
+ you can console log the input reference to the dom node by doing inputRef.current
+
+ - if you do inputRef.current.focus() it should highlight or go to the input field that it's referencing
+    this wil not cause a re-render
+
+-  
