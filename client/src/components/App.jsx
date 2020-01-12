@@ -6,7 +6,7 @@ import WeatherHooks from './WeatherHooks/index';
 import SpotifyHooks from './SpotifyHooks/index';
 import TodoHooks from './TodoHooks/index';
 import TodoHooksMine from './TodoHooksMine/index';
-
+import ReactCalculator from './CalculatorHooks/index';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +32,8 @@ class App extends Component {
         {/* <WeatherHooks/> */}
         {/* <SpotifyHooks/> */}
         {/* <TodoHooks/> */}
-        <TodoHooksMine/>
+        {/* <TodoHooksMine/> */}
+        <ReactCalculator/>
       </div>
     )
   }
