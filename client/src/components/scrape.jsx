@@ -1,4 +1,35 @@
-let ifrm = document.createElement('iframe');
-ifrm.style = "height: 200px; width: 100%;"
-ifrm.setAttribute('id', 'ifrm'); // assign an id
-document.body.appendChild(ifrm); // to place at end of document
+//tree
+
+class Node {
+  constructor(val) {
+    this.val = val,
+    this.left = null,
+    this.right = null
+  }
+}
+
+class BST {
+  constructor() {
+    this.root = null
+  }
+
+  addNode(val) {
+    let newNode = new Node(val)
+
+    if(!this.root) this.root = newNode
+
+    else {
+      this.addNodeToCorrect(this.root, newNode)
+    }
+  }
+
+  addNodeToCorrect(currentNode, newNode) {
+    if(newNode.val < currentNode.val) {
+      if(currentNode.left === null) {
+        currentNode.left = newNode
+      } else {
+        
+      }
+    }
+  }
+}
