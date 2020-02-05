@@ -48,3 +48,19 @@ newBST.addNode(1);
 newBST.addNode(3);
 newBST.findTargetNode(BST.root, 3);
 console.log(newBST);
+
+
+const error = err => err
+const success = data => data
+
+const promise = async (data) => {
+  const promisified = await new Promise( (resolve, reject) => {
+    if(!data) reject(new Error(error(errorMessage)))
+
+    resolve(success(data))
+  })
+
+  return promisified
+}
+
+promise([1,2,3])
