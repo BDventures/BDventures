@@ -8,24 +8,55 @@ import TodoHooks from './TodoHooks/index';
 import TodoHooksMine from './TodoHooksMine/index';
 import ReactCalculator from './CalculatorHooks/index';
 import CalendarHook from './Calendar/index';
+import {SamplePosts} from './scrape.jsx';
+import {NumbersAPI} from './NumbersAPI/index.jsx'
+import {Calculate} from './Calculate/index'
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      userLoggedIn: false
+      userLoggedIn: false,
+      post: null,
+      singlePost: false,
     }
   }
 
-  changeStateInApp() {
-    const {userLoggedIn} = this.state
-    this.setState({
-      userLoggedIn: !this.state.userLoggedIn
-    })
-  }
+  // changeStateInApp() {
+  //   const {userLoggedIn} = this.state
+  //   this.setState({
+  //     userLoggedIn: !this.state.userLoggedIn
+
+  //   })
+  // }
+
+  // handleClick(data) {
+  //   this.setState({
+  //     post: data,
+  //     singlePost: true
+  //   })
+  // }
+
+  // samplePosts() {
+  //   return(
+  //     <div>
+  //       {SamplePosts.map(post => {
+  //         let each = {post}
+  //         return(
+  //           <ul>
+  //             <li onClick={() => {this.handleClick(each)}}>{post.title}</li>
+  //             <li><img style={{width:'auto', height: '200px'}}src={post.imageUrl}/></li>
+  //             <li>{post.body}</li>
+  //           </ul>
+  //         )
+  //       })}
+  //     </div>
+  //   )
+  // }
 
   render() {
-    const {userLoggedIn} = this.state
+    // console.log(this.state,'hello')
+    // const {userLoggedIn} = this.state
     return(
       <div>
         {/* {userLoggedIn ? <LandingPage/> : <User changeStateInApp={() => {this.changeStateInApp()}} userLoggedIn={userLoggedIn}/>} */}
@@ -35,7 +66,10 @@ class App extends Component {
         {/* <TodoHooks/> */}
         {/* <TodoHooksMine/> */}
         {/* <ReactCalculator/> */}
-        <CalendarHook/>
+        {/* <CalendarHook/> */}
+        {/* {this.samplePosts()} */}
+        {/* <NumbersAPI/> */}
+        <Calculate/>
       </div>
     )
   }

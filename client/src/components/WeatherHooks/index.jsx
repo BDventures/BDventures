@@ -24,7 +24,7 @@ const WeatherHooks = () => {
       changeLoading();
     }
   }, [finalCity]);
-
+  
   //save data to local storage
   // useEffect(() => {
   //   localStorage.setItem('city name', finalCity)
