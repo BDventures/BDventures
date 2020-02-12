@@ -19,6 +19,13 @@ export const RealCalculator = () => {
   }
 
   useEffect(() => {
+    //set total back to 0 by unmounting component
+    return () => {
+      setTotal(initialValue)
+    }
+  }, [final])
+
+  useEffect(() => {
     setTotal(initialValue);
     setFlag(false)
   }, [flag === true]);
