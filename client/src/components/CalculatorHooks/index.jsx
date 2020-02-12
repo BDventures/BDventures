@@ -88,7 +88,7 @@ const ReactCalculator = () => {
         <ExpenseList expenses={expenses} clearExpenses={clearExpenses} handleDelete={handleDelete} handleEdit={handleEdit}/>
       </main>
       <h1>
-        Total Spending: $
+        Total Spending:$
         {expenses.reduce((acc, curr) => {
           return (acc += parseInt(curr.amount));
         }, 0)}

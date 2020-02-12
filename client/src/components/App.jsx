@@ -11,6 +11,7 @@ import CalendarHook from './Calendar/index';
 import {SamplePosts} from './scrape.jsx';
 import {NumbersAPI} from './NumbersAPI/index.jsx'
 import {Calculate} from './Calculate/index'
+import {RealCalculator} from './RealCalculator/index'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -69,7 +70,7 @@ class App extends Component {
         {/* <CalendarHook/> */}
         {/* {this.samplePosts()} */}
         {/* <NumbersAPI/> */}
-        <Calculate/>
+        <RealCalculator/>
       </div>
     )
   }

@@ -3,9 +3,9 @@ import { CalculateList } from "./calculateList.jsx";
 import { CalculateForm } from './calculateForm.jsx'
 export const Calculate = () => {
   const initialCosts = [
-    { id: 1, charge: "Rent", amount: 1500 },
-    { id: 2, charge: "Car", amount: 530 },
-    { id: 3, charge: "Phone", amount: 50 }
+    { id: 'Rent', charge: "Rent", amount: 1500 },
+    { id: 'Car', charge: "Car", amount: 530 },
+    { id: 'Phone', charge: "Phone", amount: 50 }
   ];
 
   const [expenses, setExpenses] = useState(initialCosts);
@@ -13,7 +13,7 @@ export const Calculate = () => {
   const [newAmount, setNewAmount] = useState('')
 
   const setCharge = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     setNewCharge(e.target.value)
   }
 
@@ -21,17 +21,31 @@ export const Calculate = () => {
     setNewAmount(e.target.value)
   }
 
-  useEffect(() => {
-    console.log(expenses, 'what is this')
-  }, [expenses])
+  const deleteExpense = id => {
+    const tempExpenses = expenses.filter(item => item.id !== id)
+    setExpenses(tempExpenses)
+  }
+
+  const editExpense = id => {
+    const temp = expenses.filter(item => item.id === id)
+    const tempExpenses = [...expenses]
+    console.log(temp[0])
+    // const singleChange = {
+    //   id: temp.id,
+    //   charge: newCharge,
+    //   amount: newAmount
+    // }
+
+    // if(tempExpenses.id = temp[0].id) {
+    //   setExpenses([tempExpenses, singleChange])
+    // }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    let id = expenses.length
     
     const singleExpense = {
-      id: id+1,
+      id: newCharge,
       charge: newCharge,
       amount: newAmount
     }
@@ -47,7 +61,7 @@ export const Calculate = () => {
       <CalculateForm setCharge={setCharge} setAmount={setAmount} handleSubmit={handleSubmit} newCharge={newCharge} newAmount={newAmount}/>
 
       <h1>Budget Calculator</h1>
-      <CalculateList initialCost={expenses} />
+      <CalculateList initialCost={expenses} deleteExpense={deleteExpense} editExpense={editExpense}/>
 
       <h1>Total Spendings: ${expenses.reduce((total, current) => {
         return (total+= (parseInt(current.amount)))
