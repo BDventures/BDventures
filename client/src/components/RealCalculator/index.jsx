@@ -7,10 +7,6 @@ export const RealCalculator = () => {
   const [final, setFinal] = useState(null)
   const [event, setEvent] = useState('')
   const [flag, setFlag] = useState(false);
-console.log(total, total2)
-  const tempHold = (num) => {
-    setTotal2(parseInt(num))
-  };
   
   const updateTotal = () => {
     if(event === 'add') setFinal(total + total2)
@@ -31,7 +27,7 @@ console.log(total, total2)
     setEvent(e.target.name);
     let temp = total
 
-    tempHold(temp)
+    setTotal2(parseInt(temp))
     setFlag(true);
   };
 
