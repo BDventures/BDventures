@@ -12,6 +12,8 @@ import {SamplePosts} from './scrape.jsx';
 import {NumbersAPI} from './NumbersAPI/index.jsx'
 import {Calculate} from './Calculate/index'
 import {RealCalculator} from './RealCalculator/index'
+import {Guess} from './Guess/index'
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -69,8 +71,9 @@ class App extends Component {
         {/* <ReactCalculator/> */}
         {/* <CalendarHook/> */}
         {/* {this.samplePosts()} */}
-        {/* <NumbersAPI/> */}
-        <RealCalculator/>
+        <NumbersAPI/>
+        {/* <RealCalculator/> */}
+        {/* <Guess/> */}
       </div>
     )
   }

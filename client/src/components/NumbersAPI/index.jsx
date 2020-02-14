@@ -8,7 +8,7 @@ export const NumbersAPI = () => {
   const [value, setValue] = useState(initialValue)
   const [data, handleChange] = makeForm('')
   const api = fetchNumberData(`http://numbersapi.com/${value}`, value, loading);
-
+console.log(api, 'api')
   const changeToNewNumber = () => {
     setValue(data.newNumber)
     setLoading(false)
