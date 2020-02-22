@@ -16,6 +16,7 @@ import { Guess } from "./Guess/index";
 import { Slack } from "./Slack/index";
 import { SlackLanding } from "./Slack/SlackLanding/index";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import {UseReducerTodo} from './UseReducerTodo/index'
 
 class App extends Component {
   constructor(props) {
@@ -77,11 +78,13 @@ class App extends Component {
         {/* <NumbersAPI/> */}
         {/* <RealCalculator/> */}
         {/* <Guess/> */}
-        <Router>
+
+        {/* <Router>
           <Switch>
             <Route exact path="/" component={Slack}></Route>
           </Switch>
-        </Router>
+        </Router> */}
+        <UseReducerTodo/>
       </div>
     );
   }
