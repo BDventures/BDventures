@@ -37,6 +37,10 @@ class UserRegister extends Component {
       //}
   }
 
+  // componentWillReceiveProps(newState, newProps)
+
+  //similar to component did update?
+
   componentDidUpdate(prevProps, prevState) {
     const {counter} = this.state
     console.log(this.props.stateInfo.name, prevProps.stateInfo.name, 'props vs prevProps, you can see this if you cross out the SetState below')

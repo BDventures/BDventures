@@ -1,24 +1,16 @@
 import React, {useState, useEffect} from 'react'
-import {UseForm1} from './useForm1'
+import {GuessInput} from './guessInput.jsx';
 
 export const Guess = () => {
   const initialCount = 0
-  const initialValue = 0
-  const [count, setCount] = useState(initialCount)
-  const [values, setValues] = UseForm1({name: '', email: ''})
-  const [newValues, setNewValues] = useState('')
-  
-  const increment = () => {
-    // setCount(count + 1)
-    setCount(c => c+1)
-  }
+  const [counter, setCounter] = useState(initialCount)
+  const [values, setValues] = GuessInput({firstname: '', lastname: ''})
+  // console.log(values)
 
   return(
-    <div className='guessComponent'>
-      {count}<button onClick={increment}>Increment</button><button onClick={() => setCount(count - 1)}>Decrement</button>
-      <input onChange={setValues} name='name'></input>
-      <input onChange={setValues} name='email'/>
-      <input onChange={(e) => setNewValues(e.target.value)}/>
+    <div>
+      <input placeholder="first name" name='firstname' onChange={setValues}></input>
+      <input placeholder="last name" name='lastname' onChange={setValues}></input>
     </div>
   )
 }
