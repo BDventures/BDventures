@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useReducer } from "react";
 
 const reducer = (state, action) => {
+  console.log(action, 'action')
+  console.log(state, 'state')
   switch (action.type) {
     case "add-todo":
       return { todos: [...state.todos, { text: action.text }] };
