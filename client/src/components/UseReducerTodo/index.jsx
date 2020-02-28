@@ -1,21 +1,39 @@
-import React, {useState, useEffect, useReducer} from 'react'
+import React, { useState, useEffect, useReducer } from "react";
 
 const reducer = (state, action) => {
-  switch(action.type) {
-    case 'increment': return state+1;
-    case 'decrement': return state-1;
-    default: return state
+  switch (action.type) {
+    case "add-todo":
+      return { todos: [...state.todos, { text: action.text }] };
+
+    default:
+      return state;
   }
-}
+};
 
 export const UseReducerTodo = () => {
-  const [count, dispatch] = useReducer(reducer, 0)
+  const [text, setText] = useState("");
+  const [{ todos }, dispatch] = useReducer(reducer, { todos: [] });
 
-  return(
+  return (
     <div>
-      <button onClick={() => dispatch({type: 'increment'})}>increment</button>
-      <div>count: {count}</div>
-      <button onClick={() => dispatch({type: 'decrement'})}>decrement</button>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          dispatch({ type: "add-todo", text });
+          setText("");
+        }}
+      >
+        <input
+          placeholder="add todos..."
+          value={text}
+          onChange={e => setText(e.target.value)}
+        />
+      </form>
+
+      {/* <pre>{JSON.stringify(todos, null, 2)}</pre> */}
+      {todos.map(t => {
+        return <div>{t.text}</div>
+      })}
     </div>
-  )
-}
+  );
+};
