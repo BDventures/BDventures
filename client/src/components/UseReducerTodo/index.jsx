@@ -1,41 +1,27 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, {useState, useEffect, useReducer} from 'react'
 
 const reducer = (state, action) => {
-  console.log(action, 'action')
-  console.log(state, 'state')
-  switch (action.type) {
-    case "add-todo":
-      return { todos: [...state.todos, { text: action.text }] };
-
-    default:
-      return state;
+  switch(action.type) {
+    case 'add-todo': return {todos: [...state.todos, {text: action.text}]};
+    default: return state
   }
-};
+}
 
 export const UseReducerTodo = () => {
-  const [text, setText] = useState("");
-  const [{ todos }, dispatch] = useReducer(reducer, { todos: [] });
-
-  return (
+  const [text, setText] = useState('')
+  const [{todos}, dispatch] = useReducer(reducer, {todos: []})
+  console.log(todos, 'todos')
+  return(
     <div>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          dispatch({ type: "add-todo", text });
-          setText("");
-        }}
-      >
-        <input
-          placeholder="add todos..."
-          value={text}
-          onChange={e => setText(e.target.value)}
-        />
+      <h2>Use Reducer Todo</h2>
+      <form onSubmit={e => {
+        e.preventDefault()
+        dispatch({type: 'add-todo', text})
+        setText('')
+      }}>
+        <input value={text} placeholder='add todos..' onChange={e => setText(e.target.value)}></input>
       </form>
-
-      {/* <pre>{JSON.stringify(todos, null, 2)}</pre> */}
-      {todos.map(t => {
-        return <div>{t.text}</div>
-      })}
+      {todos.map(t => <div>{t.text}</div>)}
     </div>
-  );
-};
+  )
+}
