@@ -1,9 +1,10 @@
 import React, {useState, useEffect, useReducer} from 'react'
+import { getConsoleOutput } from '@jest/console';
 
 const reducer = (state, action) => {
   switch(action.type) {
     case 'add-todo': return {todos: [...state.todos, {text: action.text}]};
-    
+
     default: return state
   }
 }
@@ -84,3 +85,42 @@ let newBST = new BST()
 newBST.addNode(2)
 newBST.addNode(1)
 newBST.addNode(3)
+
+const error = err => err
+const success = data => data
+
+const logMessage = (message) => {
+  console.log(message, 'this is going to be either error or success')
+}
+
+
+let CBfn = (data, cb) => {
+  const errorMsg = `no data to be found`
+  if(!data) return cb(new Error(error(errorMsg)))
+
+  return cb(success(data))
+}
+
+CBfn([1,2,3], logMessage)
+
+let promiseFn = (data) => {
+  const errorMsg = `no data to be found`
+
+  return new Promise((resolve, reject) => {
+    if(!data) reject(new Error(error(errorMsg)))
+
+    resolve(success(data))
+  }).then(res => res).catch(err=> err)
+}
+
+promiseFn([1,2,3])
+
+const asynFn = async (data) => {
+  const errorMsg = `no data`
+
+  const response = await data
+
+  if(!data) return error(new Error(errorMsg))
+
+  return response
+}
