@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useReducer} from 'react'
-import { getConsoleOutput } from '@jest/console';
+// import { getConsoleOutput } from '@jest/console';
 
 const reducer = (state, action) => {
   switch(action.type) {
